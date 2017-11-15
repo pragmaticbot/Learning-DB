@@ -1,0 +1,19 @@
+{
+  "name": "feedback-node",
+  "version": "1.0.0",
+  "description": "A NodeJS Application using Express, React, MongoDB and Heroku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruiehq/Feedback-Node.git"
+  },
+  "author": "Ruie Dela Pena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruiehq/Feedback-Node/issues"
+  },
+  "homepage": "https://github.com/ruiehq/Feedback-Node#readme"
+}
