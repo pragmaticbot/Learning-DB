@@ -1,12 +1,45 @@
 const express = require('express');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const mongoose = require('mongoose');
 
+/* Requires */
+const keys = require('./config');
+require('./models/User');
+
+/* Initialize Server */
 const app = express();
-const PORT = process.env.PORT || 5000;
+const User = mongoose.model('user');
 
+mongoose.connect(keys.mlabURL, { useMongoClient: true });
+mongoose.Promise = global.Promise;
+
+passport.use(new GoogleStrategy({
+   clientID: keys.googleID,
+   clientSecret: keys.googleSecret,
+   callbackURL: '/auth/google/callback'
+}, (accessToken, refreshToken, profile, done) => {
+   new User({ googleID: profile.id }).save()
+      .then(user => {
+         console.log(user);
+      })
+}));
+
+
+/* Routes */
 app.get('/', (req, res) => {
    res.send({ greet: 'hi' });
 });
 
+app.get('/auth/google', passport.authenticate('google', {
+   scope: ['email', 'profile']
+}));
+
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }));
+
+
+/* Run Server */
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
    console.log(`Server is running on PORT:${PORT}`);
 });
