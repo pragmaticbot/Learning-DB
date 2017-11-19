@@ -9,6 +9,7 @@ require('./models/User');
 
 /* Initialize Server */
 const app = express();
+
 const User = mongoose.model('user');
 
 mongoose.connect(keys.mlabURL, { useMongoClient: true });
@@ -36,6 +37,10 @@ app.get('/auth/google', passport.authenticate('google', {
 }));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }));
+
+app.get('/api/current_user', (req, res) => {
+   res.send({ user: 'test' });
+})
 
 
 /* Run Server */
