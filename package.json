@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./server/index.js"
+    "client": "npm start --prefix client",
+    "server": "nodemon ./server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/ruiehq/Feedback-Node#readme",
   "dependencies": {
+    "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "mongoose": "^4.13.4",
     "passport": "^0.4.0",
@@ -26,7 +28,6 @@
   },
   "devDependencies": {
     "eslint": "^4.11.0",
-    "eslint-config-airbnb": "^16.1.0",
     "eslint-config-rallycoding": "^3.2.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
