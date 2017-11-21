@@ -2,15 +2,21 @@ const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const mongoose = require('mongoose');
+const cookie = require('cookie-session');
 
 /* Requires */
 const keys = require('./keys');
-require('./models/User');
 
 /* Initialize Server */
 mongoose.connect(keys.mlabURL, { useMongoClient: true });
 mongoose.Promise = global.Promise;
+require('./models/User');
+
 const app = express();
+
+app.use(cookie({ maxAge: 30 * 24 * 60 * 60 * 1000, keys: [keys.cookieKey] }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* Middleware Requires */
 require('./services/passport');
@@ -24,10 +30,15 @@ app.get('/auth/google', passport.authenticate('google', {
    scope: ['email', 'profile']
 }));
 
-app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }));
+app.get('/auth/google/callback', passport.authenticate('google'));
 
-app.get('/api/current_user', (req, res) => {
-   res.send({ user: 'test' });
+app.get('/api/user', (req, res) => {
+   res.send(req.user);
+})
+
+app.get('/api/logout', (req, res) => {
+   req.logout();
+   res.redirect('/api/user');
 })
 
 

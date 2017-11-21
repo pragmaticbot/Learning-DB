@@ -21,6 +21,7 @@
   "homepage": "https://github.com/ruiehq/Feedback-Node#readme",
   "dependencies": {
     "concurrently": "^3.5.1",
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "mongoose": "^4.13.4",
     "passport": "^0.4.0",
