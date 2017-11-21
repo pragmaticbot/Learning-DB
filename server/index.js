@@ -14,21 +14,12 @@ const User = mongoose.model('user');
 mongoose.connect(keys.mlabURL, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
-passport.use(new GoogleStrategy({
-   clientID: keys.googleID,
-   clientSecret: keys.googleSecret,
-   callbackURL: '/auth/google/callback'
-}, (accessToken, refreshToken, profile, done) => {
-   new User({ googleID: profile.id }).save()
-      .then(user => {
-         console.log(user);
-      })
-}));
-
+/* Middleware Requires */
+require('./services/passport');
 
 /* Routes */
 app.get('/', (req, res) => {
-   res.send({ greet: 'hi' });
+  res.send({ Welcome: 'hi' });
 });
 
 app.get('/auth/google', passport.authenticate('google', {
