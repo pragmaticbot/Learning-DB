@@ -8,11 +8,9 @@ const keys = require('./keys');
 require('./models/User');
 
 /* Initialize Server */
-const app = express();
-
-const User = mongoose.model('user');
 mongoose.connect(keys.mlabURL, { useMongoClient: true });
 mongoose.Promise = global.Promise;
+const app = express();
 
 /* Middleware Requires */
 require('./services/passport');
