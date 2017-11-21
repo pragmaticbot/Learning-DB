@@ -4,14 +4,13 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const mongoose = require('mongoose');
 
 /* Requires */
-const keys = require('./config');
+const keys = require('./keys');
 require('./models/User');
 
 /* Initialize Server */
 const app = express();
 
 const User = mongoose.model('user');
-
 mongoose.connect(keys.mlabURL, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
@@ -48,5 +47,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
    console.log(`Server is running on PORT:${PORT}`);
 });
-
-
