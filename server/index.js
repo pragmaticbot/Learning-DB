@@ -23,7 +23,7 @@ require('./services/passport');
 
 /* Routes */
 app.get('/', (req, res) => {
-  res.send({ Welcome: 'hi' });
+  res.send({ Welcome: req.user });
 });
 
 app.get('/auth/google', passport.authenticate('google', {
