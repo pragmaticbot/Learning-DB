@@ -23,7 +23,7 @@ class Header extends Component {
       return (
       <nav>
          <div className="nav-wrapper">
-            <Link to={this.props.auth ? '/surveysa' : '/'} className="brand-logo">Emaily</Link>
+            <Link to={this.props.auth ? '/survey' : '/'} className="brand-logo">Emaily</Link>
          <ul id="nav-mobile" className="right hide-on-med-and-down">
             {this.renderLink()}
          </ul>
