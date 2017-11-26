@@ -6,7 +6,6 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-const Dashboard = () => { return <div>Dashboard</div> };
 const Survey = () => { return <div>Survey</div> };
 const SurveyNew = () => { return <div>New Survey</div> };
 
@@ -22,7 +21,6 @@ class App extends Component {
             <div className="container">
                <Header />
                <Route exact path={'/'} component={Landing} />
-               <Route exact path={'/dashboard'} component={Dashboard} />
                <Route exact path={'/surveys'} component={Survey} />
                <Route path={'/survey/new'} component={SurveyNew} />
             </div>
