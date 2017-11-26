@@ -30,7 +30,13 @@ app.get('/auth/google', passport.authenticate('google', {
    scope: ['email', 'profile']
 }));
 
-app.get('/auth/google/callback', passport.authenticate('google'));
+app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
+   res.redirect('/surveys')
+});
+
+app.get('/surveys', (req, res) => {
+   res.send('surveys');
+})
 
 app.get('/api/user', (req, res) => {
    res.send(req.user);
@@ -38,12 +44,12 @@ app.get('/api/user', (req, res) => {
 
 app.get('/api/logout', (req, res) => {
    req.logout();
-   res.redirect('/api/user');
+   res.redirect('/');
 })
 
 
 /* Run Server */
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-   console.log(`Server is running on PORT:${PORT}`);
+   console.log(`Server is running on http://localhost:${PORT}`);
 });
