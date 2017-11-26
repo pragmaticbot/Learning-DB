@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Header from './Header';
 import * as actions from '../actions';
 
-const Landing = () => { return <div>Landing</div> };
+import Header from './Header';
+import Landing from './Landing';
 const Dashboard = () => { return <div>Dashboard</div> };
 const Survey = () => { return <div>Survey</div> };
 const SurveyNew = () => { return <div>New Survey</div> };
@@ -17,7 +17,6 @@ class App extends Component {
    }
 
    render() {
-      console.log(this.props)
       return (
          <BrowserRouter>
             <div className="container">
