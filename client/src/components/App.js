@@ -6,7 +6,7 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-const Survey = () => { return <div>Survey</div> };
+const Survey = () => { return <div>Survey Component</div> };
 const SurveyNew = () => { return <div>New Survey</div> };
 
 class App extends Component {
