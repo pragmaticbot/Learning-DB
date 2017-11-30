@@ -34,10 +34,6 @@ app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => 
    res.redirect('/surveys')
 });
 
-app.get('/surveys', (req, res) => {
-   res.send('surveys');
-});
-
 app.get('/api/user', (req, res) => {
    res.send(req.user);
 });

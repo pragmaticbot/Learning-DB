@@ -25,7 +25,8 @@
     "express": "^4.16.2",
     "mongoose": "^4.13.4",
     "passport": "^0.4.0",
-    "passport-google-oauth2": "^0.1.6"
+    "passport-google-oauth2": "^0.1.6",
+    "react-stripe-checkout": "^2.6.3"
   },
   "devDependencies": {
     "eslint": "^4.11.0",
